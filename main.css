@@ -1,0 +1,161 @@
+/* Переменные */
+
+:root {
+    --calcContainerWidth: 500px;
+    --calcContainerHeight: 600px;
+    --buttonContainerGap: 10px;
+    --bodyBgColor: #222226;
+    --calcContainerBgColor: #333336;
+    --textColor: #f3f3f3;
+    --buttonBgColor: #444446;
+    --buttonBgColorActive: #4d4d4d;
+    --borderRadius: 5px;
+}
+
+body {
+    font-size: 25px;
+    background-color: var(--bodyBgColor);
+}
+
+#calc-container {
+    width: var(--calcContainerWidth);
+    height: var(--calcContainerHeight);
+    margin: 5vh auto;
+    background-color: var(--calcContainerBgColor);
+    padding: 20px;
+    border-radius: var(--borderRadius);
+}
+
+#output-field {
+    height: calc(var(--calcContainerHeight) / 15);
+    box-shadow: inset 0 0 5px var(--bodyBgColor);
+    width: 100%;
+    padding: 5px;
+    font-size: inherit;
+    display: block;
+    box-sizing: border-box;
+    background-color: var(--buttonBgColor);
+    color: var(--textColor);
+    border: none;
+}
+
+#button-container {
+    width: inherit;
+    margin-top: var(--buttonContainerGap);
+    display: grid;
+    outline: none;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, calc(var(--calcContainerHeight) / 6));
+    grid-template-areas: 
+        "one two three plus" 
+        "four five six minus" 
+        "seven eight nine multiply_" 
+        "zero_ point evaluate divide" 
+        "clear-symb clear-all . .";
+    gap: var(--buttonContainerGap);
+}
+
+button {
+    background-color: var(--buttonBgColor);
+    font-size: inherit;
+    color: var(--textColor);
+    border: none;
+    border-radius: var(--borderRadius);
+    cursor: pointer;
+    transition: 0.1s;
+    box-shadow: 0 2px 5px var(--bodyBgColor);
+}
+
+button:focus {
+    outline: none;
+}
+
+.active {
+    transform: scale(0.95);
+    background-color: var(--buttonBgColorActive);
+}
+
+/* Позиционирование элементов в grid'e */
+
+button[value="1"] {
+    grid-area: one;
+}
+
+button[value="2"] {
+    grid-area: two;
+}
+
+button[value="3"] {
+    grid-area: three;
+}
+
+button[value="4"] {
+    grid-area: four;
+}
+
+button[value="5"] {
+    grid-area: five;
+}
+
+button[value="6"] {
+    grid-area: six;
+}
+
+button[value="7"] {
+    grid-area: seven;
+}
+
+button[value="8"] {
+    grid-area: eight;
+}
+
+button[value="9"] {
+    grid-area: nine;
+}
+
+button[value="0"] {
+    grid-area: zero_;
+}
+
+button[value="+"] {
+    grid-area: plus;
+}
+
+button[value="-"] {
+    grid-area: minus;
+}
+
+button[value="*"] {
+    grid-area: multiply_;
+}
+
+button[value="/"] {
+    grid-area: divide;
+}
+
+button[value="."] {
+    grid-area: point;
+}
+
+button[id="clear-symb"] {
+    grid-area: clear-symb;
+}
+
+button[id="clear-all"] {
+    grid-area: clear-all;
+}
+
+/* Media-запросы */
+
+@media screen and (max-width: 550px) {
+    :root {
+        --calcContainerWidth: 400px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    :root {
+        --calcContainerWidth: 300px;
+        --calcContainerHeight: 500px;
+    }
+}
