@@ -27,7 +27,7 @@ body {
 }
 
 #output-field {
-    height: calc(var(--calcContainerHeight) / 15);
+    height: calc(var(--calcContainerHeight) / 12);
     box-shadow: inset 0 0 5px var(--bodyBgColor);
     width: 100%;
     padding: 5px;
@@ -47,11 +47,11 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, calc(var(--calcContainerHeight) / 6));
     grid-template-areas: 
-        "one two three plus" 
-        "four five six minus" 
-        "seven eight nine multiply_" 
-        "zero_ point evaluate divide" 
-        "clear-symb clear-all . .";
+        "clear-symb clear-all remainder multiply_" 
+        "one two three minus" 
+        "four five six divide" 
+        "seven eight nine plus" 
+        "point zero_ evaluate plus";
     gap: var(--buttonContainerGap);
 }
 
@@ -135,6 +135,14 @@ button[value="/"] {
 
 button[value="."] {
     grid-area: point;
+}
+
+button[value="="] {
+    grid-area: evaluate;
+}
+
+button[value="%"] {
+    grid-area: remainder;
 }
 
 button[id="clear-symb"] {

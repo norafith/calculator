@@ -1,7 +1,7 @@
 const calc_container = document.querySelector("#calc-container");
 const button_container = document.querySelector("#button-container");
 const output_field = document.querySelector("#output-field");
-const operations = ["+", "-", "*", "/", "="];
+const operations = ["+", "-", "*", "/", "=", "%"];
 
 let curr_num = '', curr_operation = '';
 
@@ -13,6 +13,7 @@ function create_buttons() {
         button.value = i;
         button_container.appendChild(button);
     }
+
     for (let operation of operations) {
         button = document.createElement("button");
         button.classList.add("operation");
@@ -20,6 +21,7 @@ function create_buttons() {
         button.value = operation;
         button_container.appendChild(button);
     }
+
     button = document.createElement("button");
     button.setAttribute("id", "point");
     button.classList.add("number");
@@ -101,6 +103,8 @@ function evaluate() {
         return num1 * num2;
     } else if (curr_operation == "/"){
         return num1 / num2;
+    } else if (curr_operation == "%") {
+        return num1 % num2;
     }
 }
 
