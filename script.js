@@ -53,9 +53,9 @@ function add_event_listeners() {
     clear_all_button.addEventListener("click", clear_all);
 
     document.addEventListener("keydown", (e) => {
-        transform_start(e);
-        if (e.key == "Backspace") clear_symb(e)
-        else enter_value(e)
+        if (!e.repeat) transform_start(e);
+        if (e.key == "Backspace") clear_symb(e);
+        else enter_value(e);
     })
 }
 
@@ -63,7 +63,6 @@ function enter_value(e) {
     let key_value;
     if (e.target.value) key_value = e.target.value
     else key_value = e.key;
-    console.log(key_value);
     if ((key_value == "=" || key_value == "Enter") && curr_operation && output_field.value) {
         output_field.value = evaluate();
         curr_num = output_field.value;
@@ -81,7 +80,8 @@ function enter_value(e) {
 }
 
 function clear_symb(e) {
-    output_field.value = output_field.value.slice(0, output_field.value.length - 1);
+    if (output_field.value == "Infinity") clear_all(e)
+    else output_field.value = output_field.value.slice(0, output_field.value.length - 1);
 }
 
 function clear_all(e) {
