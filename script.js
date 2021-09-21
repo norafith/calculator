@@ -109,7 +109,7 @@ function evaluate() {
 }
 
 function transform_start(e) {
-    if (e.constructor.name == "MouseEvent") { 
+    if (e.constructor.name == "PointerEvent") { 
         e.target.classList.add("active");
     } else if (e.key == "." || operations.includes(e.key) || !isNaN(Number(e.key))) {
         let button = document.querySelector(`button[value="${e.key}"]`);
